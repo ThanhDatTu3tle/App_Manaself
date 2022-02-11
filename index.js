@@ -3,6 +3,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
+// routes
+const myWorksRoute = require('./routes/myWorks.route');
+const projectsRoute = require('./routes/projects.route');
+const importantRoute = require('./routes/important.route');
+
+// middlewares
+
 // port
 const port = 3000;
 
@@ -22,6 +29,11 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
     res.render('index');
 });
+
+// use routes
+app.use('/myWorks', myWorksRoute);
+app.use('/projects', projectsRoute);
+app.use('/important', importantRoute);
 
 // start server at port
 app.listen(port, () => {

@@ -14,4 +14,26 @@ html
             a.nav-link.fs-5.text-dark(href='/') Home            
             a.nav-link.fs-5.text-dark(href='/users') Users
             
+        .container-fluid.ps-4.d-flex.flex-row.bg-light   
+          .col-3.pt-4.height-100
+            .d-flex.flex-column
+              a.nav-items.btn.btn-secondary.w-75.mt-3.shadow(href="/myWorks") My works
+              
+              a.nav-items.btn.btn-success.w-75.mt-3.shadow(href="/projects") Projects
+          .col-3.pt-4.height-100
+            .d-flex.flex-column
+              a.nav-items.btn.btn-info.w-75.mt-3.shadow(href="/") Today
+
+              a.nav-items.btn.btn-warning.w-75.mt-3.mb-5.shadow(href="/important") Important 
+          .col-3.pt-4.height-100
+            .d-flex.flex-column
+              a.nav-items.btn.btn-secondary.w-75.mt-3.shadow(href="#") 
+              
+              a.nav-items.btn.btn-success.w-75.mt-3.shadow(href="#") 
+          .col-3.pt-4.height-100
+            .d-flex.flex-column
+              a.nav-items.btn.btn-info.w-75.mt-3.shadow(href="#") 
+
+              a.nav-items.btn.btn-warning.w-75.mt-3.mb-5.shadow(href="#")  
+            
         block content 
