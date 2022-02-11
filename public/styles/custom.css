@@ -1,0 +1,8 @@
+.mynavbar {
+  display: flex;
+  background-color: red !important;
+}
+
+.navbar-brand {
+  color: red;
+}
