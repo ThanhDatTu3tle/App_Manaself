@@ -4,25 +4,23 @@ block content
     .col-12.pt-4.bg-white 
       .d-flex.flex-row.justify-content-around 
         .fs-2.mt-3 Today 
-         
-
-        form.d-flex.mt-3.ms-3.me-3(action="#", method="GET")
-          input.form-control.me-2(type='text', placeholder='Search', aria-label='Search', name='q', value=input)
-          button.btn.btn-danger.text-black Search 
-
+        
         a.nav-items.btn.btn-danger.fs-2.text-black.shadow(href="/today/create") + 
 
     .col-12.d-flex.mt-4
-      .col-1 
-      .col-10
+      .col-3
+      .col-6
         table.table-danger
-            each today in todays
-                tr 
-                    th
-                        input.form-check-input.me-5(type='checkbox', value='')
-                    td= today.title
+          each today in todays
+            tr 
+              th
+                input.form-check-input.me-5(type='checkbox', value='')
+              td= today.title
+              td
+                form(action="/today", method="POST")
+                  button.btn.btn-primary.ms-5 Remove
 
           
   
-      .col-1
+      .col-3
       

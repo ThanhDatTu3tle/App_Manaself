@@ -15,8 +15,8 @@ block content
                 form(action="/today/create", method="POST")
                     .form-group
                         label.fs-5(for="title") Title
-                        input#title.form-control(type="text", name="title", value=values ? values.title : "")
+                        input#title.form-control(type="text", name="title")
 
-                    button.btn.btn-primary Create
+                    button.btn.btn-primary.mt-3 Create
             .col-2
         
