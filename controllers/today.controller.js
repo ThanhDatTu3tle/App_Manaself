@@ -11,9 +11,9 @@ module.exports.index = (req, res) => {
 // get id
 module.exports.get = (req, res) => {
     var id = req.params.id;
-
-    var todays = db.get('todays').find({ id: id }).value();
-
+    
+    var today = db.get('todays').find({ id: id }).value();
+    console.log(today);
     res.render('today/view', {
         today: today
     });
@@ -28,14 +28,15 @@ module.exports.create = (req, res) => {
 module.exports.postCreate = (req, res) => {
     req.body.id = shortid.generate();
     
+    console.log(req.body);
     db.get('todays').push(req.body).write();
     res.redirect('/today');
 };
 
 // removeCreate
-module.exports.removeCreate = (req, res) => {
-    
+module.exports.removeCreate = (req, res) => {  
+    const id = req.params.id;    
 
-    db.get('todays').remove({ id: '7VLAUKmf4' }).write();
+    db.get('todays').remove(id).write();
     res.redirect('/today');
 };
