@@ -1,5 +1,4 @@
 const express = require('express');
-const multer = require('multer');
 
 const router = express.Router();
 
@@ -18,6 +17,8 @@ router.post('/create', controller.postCreate);
 router.post('/', controller.removeCreate);
 
 // localhost:3000/today/:id
-router.get('/:id', controller.get);
+router.get('/:id', controller.removeCreate);
+
+
 
 module.exports = router;

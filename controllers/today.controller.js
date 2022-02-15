@@ -8,17 +8,6 @@ module.exports.index = (req, res) => {
     });
 };
 
-// get id
-module.exports.get = (req, res) => {
-    var id = req.params.id;
-    
-    var today = db.get('todays').find({ id: id }).value();
-    console.log(today);
-    res.render('today/view', {
-        today: today
-    });
-};
-
 // create
 module.exports.create = (req, res) => {
     res.render('today/create');
@@ -26,17 +15,19 @@ module.exports.create = (req, res) => {
 
 // postCreate
 module.exports.postCreate = (req, res) => {
-    req.body.id = shortid.generate();
+    const id = shortid.generate();
+    req.body.id = id;
     
-    console.log(req.body);
     db.get('todays').push(req.body).write();
+    
     res.redirect('/today');
 };
 
 // removeCreate
 module.exports.removeCreate = (req, res) => {  
-    const id = req.params.id;    
+    const idRemove = req.params.id;
+    
+    db.get('todays').remove({ id:idRemove }).write();
 
-    db.get('todays').remove(id).write();
     res.redirect('/today');
 };

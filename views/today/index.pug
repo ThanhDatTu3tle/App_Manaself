@@ -2,10 +2,13 @@ extends ../layouts/common
 
 block content      
     .col-12.pt-4.bg-white 
-      .d-flex.flex-row.justify-content-around 
+      .d-flex.flex-row.justify-content-around
         .fs-2.mt-3 Today 
         
-        a.nav-items.btn.btn-danger.fs-2.text-black.shadow(href="/today/create") + 
+        .d-flex.align-items-center
+          a.nav-items.btn.btn-danger.fs-2.ms-4.text-black.shadow(href="/today/create") + 
+
+          
 
     .col-12.d-flex.mt-4
       .col-3
@@ -14,12 +17,12 @@ block content
           each today in todays
             tr 
               th
-                input.form-check-input.me-5(type='checkbox', value='')
+                input.form-check-input.me-5(type='checkbox', value=values ? values.id : "")
               td= today.title
               td
                 form(action="/today", method="POST")
-                  button.btn.btn-primary.ms-5 Remove
-                  a.btn.btn-light(href='/today/' + today.id) View
+                  a.btn.btn-warning.mt-3.ms-5(href='/today/' + today.id) Remove 
+                  
 
           
   
