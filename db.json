@@ -1,12 +1,18 @@
 {
   "todays": [
     {
-      "title": "Tối nay đi ngủ sớm",
-      "id": "TjM9mI4FH"
+      "title": "Chiều 5h-6h có hẹn đi cafe với Bài",
+      "id": "BUdyZgxYT"
     },
     {
-      "title": "Workout !!!",
-      "id": "UBfvcJPra"
+      "title": "Tối 10h30 đi đón Bơ",
+      "id": "G2vjdoVVb"
+    }
+  ],
+  "projects": [
+    {
+      "name": "ĐỒ ÁN PHẦN MỀM",
+      "idProject": "Ug9IODoCY"
     }
   ]
 }

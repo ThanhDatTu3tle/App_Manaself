@@ -1,0 +1,31 @@
+extends ../layoutsDetails/common
+
+block content
+    
+    .col-12.pt-4.bg-white 
+      .d-flex.flex-row.justify-content-around
+        h1 Details project 
+
+        p.fs-4.mt-4
+            span= project.name
+        
+        .d-flex.align-items-center
+          a.nav-items.btn.btn-danger.fs-2.ms-4.text-black.shadow(href='/projects/' + project.idProject + '/details/create') + 
+        
+    .col-12.d-flex.mt-4
+      .col-3
+      .col-6
+        table.table-danger
+          each quest in quests
+            tr 
+              th
+                input.form-check-input.me-5(type='checkbox', value=values ? values.idProject : "")
+              td= quest.name
+              td
+                form(action="/projects/:idProject/details", method="POST")
+                  a.btn.btn-warning.mt-3.ms-5(href='/projects/:idProject/details/' + today.id) Remove 
+                  
+
+          
+  
+      .col-3

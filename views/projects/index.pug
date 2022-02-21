@@ -4,4 +4,21 @@ block content
     .col-12.pt-4.bg-white 
       .d-flex.flex-row.justify-content-around 
         .fs-2 Projects 
-        a.nav-items.btn.btn-danger.fs-2.text-black.shadow(href="/") +  
+        a.nav-items.btn.btn-danger.fs-2.text-black.shadow(href="/projects/create") +  
+
+    .col-12.d-flex.mt-4
+      .col-3
+      .col-6
+        table.table-danger
+          each project in projects
+            tr 
+              th
+                input.form-check-input.me-5(type='checkbox', value=values ? values.idProject : "")
+              td= project.name
+              td
+                a.btn.btn-warning.mt-1.ms-5(href='/projects/' + project.idProject) Details 
+                  
+
+          
+  
+      .col-3
