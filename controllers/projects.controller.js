@@ -2,19 +2,19 @@ const db = require('../db');
 const shortid = require('shortid');
 
 // index
-module.exports.index = (req, res) => {
+const index = (req, res) => {
     res.render('projects/index', {
         projects: db.get('projects').value()
     });
 };
 
 // create 
-module.exports.create = (req, res) => {
+const create = (req, res) => {
     res.render('projects/create');
 };
 
 // postCreate 
-module.exports.postCreate = (req, res) => {
+const postCreate = (req, res) => {
     const idProject = shortid.generate();
     req.body.idProject = idProject;
 
@@ -27,31 +27,46 @@ module.exports.postCreate = (req, res) => {
 };
 
 // details
-module.exports.details = (req, res) => {
+const details = (req, res) => {
     const idDetails = req.params.idProject;
 
     const project = db.get('projects').find({ idProject: idDetails }).value();
-
+    const quests = project.quests;
     res.render('projects/details/detailsProject', {
-        project: project
+        project,
+        quests
     });
 };
 
 // detailsCreate
-module.exports.detailsCreate = (req, res) => {
-    res.render('projects/details/create');
+const detailsCreate = (req, res) => {
+    const id = req.params.idProject;
+    res.render('projects/details/create', {
+        id
+    });
 };
 
 // postDetailsCreate
-module.exports.postDetailsCreate = (req, res) => {
+const postDetailsCreate =  (req, res) => {
     const idQuest = shortid.generate();
     req.body.idQuest = idQuest;
-
+    // const {idQuest} = req.body;
+    //const {idProject} = req.params
     const idDetailsCreate = req.params.idProject;
-
     // const project = db.get('projects').find({ idProject: idDetailsCreate }).value();
 
     db.get('projects').find({ idProject: idDetailsCreate }).get('quests').push(req.body).write();
 
-    res.redirect('/projects');
+    res.redirect(`/projects/${idDetailsCreate}`); 
 };
+
+
+
+module.exports = {
+    index,
+    create,
+    postCreate,
+    details,
+    detailsCreate,
+    postDetailsCreate
+}

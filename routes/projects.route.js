@@ -14,12 +14,12 @@ router.get('/create', controller.create);
 router.post('/create', controller.postCreate);
 
 // localhost:3000/projects/idProject/detailsProject
-router.get('/:idProject/detailsProject', controller.details);
+router.get('/:idProject', controller.details);
 
 // localhost:3000/projects/idProject/details/create
-router.get('/:idProject/details/create', controller.detailsCreate);
+router.get('/:idProject/create', controller.detailsCreate);
 
 // localhost:3000/projects/idProject/details/create
-router.post('/:idProject/details/create', controller.postDetailsCreate);
+router.post('/:idProject/create', controller.postDetailsCreate);
 
 module.exports = router;
