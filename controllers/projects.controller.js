@@ -18,6 +18,9 @@ module.exports.postCreate = (req, res) => {
     const idProject = shortid.generate();
     req.body.idProject = idProject;
 
+    const quests = [];
+    req.body.quests = quests;
+
     db.get('projects').push(req.body).write();
 
     res.redirect('/projects');
@@ -29,7 +32,7 @@ module.exports.details = (req, res) => {
 
     const project = db.get('projects').find({ idProject: idDetails }).value();
 
-    res.render('projects/details/details', {
+    res.render('projects/details/detailsProject', {
         project: project
     });
 };
@@ -46,11 +49,9 @@ module.exports.postDetailsCreate = (req, res) => {
 
     const idDetailsCreate = req.params.idProject;
 
-    db.get('projects').find({ idProject: idDetailsCreate }).push(req.body).write();
+    // const project = db.get('projects').find({ idProject: idDetailsCreate }).value();
 
-    const idProject = db.get('projects').find({ idProject: idDetailsCreate }).get('quests.' + idDetailsCreate, 0).value();
+    db.get('projects').find({ idProject: idDetailsCreate }).get('quests').push(req.body).write();
 
-    db.get('projects').find({ idProject: idDetailsCreate }).set('quests.' + idDetailsCreate, idProject + 1).write();
-
-    res.redirect('/projects/details/details');
+    res.redirect('/projects');
 };
